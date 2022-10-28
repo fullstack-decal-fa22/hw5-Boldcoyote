@@ -45,6 +45,7 @@ app.post('/post', (req, res) => {
 })
 
 app.post('/post/:postId/comment', (req, res) => {
+  console.log(req)
   const post = data[req.params.postId]
   post.comments = [...post.comments, req.body.newComment]
   res.send(post)

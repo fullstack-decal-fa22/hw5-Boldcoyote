@@ -1,19 +1,25 @@
-import {_________} from "react";
+import { useState } from "react";
 import axios from "axios";
 
-const NewPost = ({ _________ }) => {
+const NewPost = ({ getPosts }) => {
   const [id, setId] = useState();
   const [title, setTitle] = useState();
   const [body, setBody] = useState();
 
   const onSubmit = () => {
-    console.log({
-      id,
-      title,
-      body
-    })
+    const data = {
+      id: id,
+      title: title,
+      body: body
+    }
 
-    axios.post(_________, _________).then(_________);
+    axios
+    .post(`http://localhost:3002/post`, data)
+    .then(getPosts);
+
+    setId();
+    setTitle();
+    setBody();
   }
 
   return <div>
